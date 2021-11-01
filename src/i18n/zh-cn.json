@@ -1,0 +1,29 @@
+{
+    "publicKey": "公钥",
+    "privateKey": "私钥",
+    "zh_cn": "简体中文",
+    "en_us": "英文",
+    "button": {
+        "generate": "生成"
+    },
+    "side": {
+        "draft": "草稿",
+        "activity": "动态",
+        "mailbox": "通知",
+        "setting": "设置"
+    },
+    "draft": {
+        "title": "标题",
+        "desc": "描述",
+        "md": "Markdown 内容",
+        "ph_title": "请输入一个有趣的标题",
+        "ph_desc": "请输入你的内容描述",
+        "next_step": "下一步",
+        "bench_done": "保存",
+        "bench_title": "Markdown 工作台",
+        "preview": "预览"
+    },
+    "setting": {
+        "language": "语言"
+    }
+}

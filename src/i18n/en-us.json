@@ -1,0 +1,29 @@
+{
+    "publicKey": "Public Key",
+    "privateKey": "Private Key",
+    "zh_cn": "Chinese (simplified)",
+    "en_us": "English",
+    "button": {
+        "generate": "Generate"
+    },
+    "side": {
+        "draft": "Draft",
+        "activity": "Activity",
+        "mailbox": "Mailbox",
+        "setting": "Setting"
+    },
+    "draft": {
+        "title": "Title",
+        "desc": "Description",
+        "md": "Markdown Content",
+        "ph_title": "please enter an interesting title",
+        "ph_desc": "please enter your content description",
+        "next_step": "Next",
+        "bench_done": "Save",
+        "bench_title": "Markdown Bench",
+        "preview": "Preview"
+    },
+    "setting": {
+        "language": "Language"
+    }
+}

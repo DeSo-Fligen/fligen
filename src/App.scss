@@ -1,0 +1,21 @@
+@import "bootstrap/scss/bootstrap";
+
+.main-container{
+    width: 100vw;
+    height: 100vh;
+}
+.header-container{
+    height: 54px;
+}
+.mid-container{
+    height: calc(100vh - 54px);
+}
+.content-container {
+    height: 100%;
+    flex: 1;
+    background: #f6f6f6;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

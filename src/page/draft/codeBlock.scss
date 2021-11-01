@@ -1,0 +1,41 @@
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/material.css';
+
+$height_view: calc(100% - 30px);
+.bench_main {
+    display: flex;
+    flex-direction: column;
+}
+.bench_block {
+    height: 300px;
+    .label {
+        font-size: .8em;
+        height: 20px;
+        margin: 5px 0;
+    }
+}
+.md-view {
+    background: #e1e1e1;
+    padding: 10px;
+    word-wrap: break-word;
+    white-space: pre-line;
+    height: $height_view;
+}
+.self_mirror {
+    height: $height_view;
+}
+// overwritten in CodeMirror source css style height
+.CodeMirror {
+    height: 100%;
+}
+
+@media screen and (min-width: 850px) {
+    .bench_main {
+        flex-direction: row;
+    }
+    .bench_block {
+        width: calc(50% - 20px);
+        height: calc(100% - 50px);
+        margin-right: 20px;
+    }
+}

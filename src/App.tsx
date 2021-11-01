@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import StatusBar from './component/statusBar/statusBar';
+import SideBar from './component/sideBar/sideBar';
+import {HashRouter, Route} from "react-router-dom";
+import { routerList } from './utils/router';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-container">
+      <div className="header-container">
+        <StatusBar></StatusBar>
+      </div>
+      <div className="mid-container flex1">
+        <SideBar></SideBar>
+        <HashRouter>
+          <div className="content-container">
+            {routerList.map(item => (
+              <Route key={item.name} path={item.path} exact={item.exact} component={item.component}></Route>
+            ))}
+          </div>
+        </HashRouter>
+      </div>
     </div>
   );
 }
