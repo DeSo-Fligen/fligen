@@ -6,10 +6,16 @@
 .code-mirror{
     height: 20vh;
 }
-.arrow-right {
-    width: 30px;
-    height: 30px;
-    margin: 0 5px;
+.ml5 {
+    margin-left: 5px;
 }
 .bench-container {
+    .bench-header {
+        height: 50px;
+        .title {
+            margin: 0 10px 0 20px;
+            font-size: 1.3em;
+            font-weight: 800;
+        }
+    }
 }

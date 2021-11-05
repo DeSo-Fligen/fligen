@@ -29,6 +29,9 @@
 .flex-evenly {
     justify-content: space-evenly;
 }
+.fg1 {
+    flex-grow: 1;
+}
 .fs0 {
     flex-shrink: 0;
 }
@@ -65,4 +68,17 @@
 }
 .oh {
     overflow: hidden;
+}
+.usn {
+    user-select: none;
+}
+.cp {
+    cursor: pointer;
+}
+.white {
+    color: white;
+}
+.icon {
+    width: 20px;
+    height: 20px;
 }

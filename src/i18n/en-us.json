@@ -18,10 +18,11 @@
         "md": "Markdown Content",
         "ph_title": "please enter an interesting title",
         "ph_desc": "please enter your content description",
-        "next_step": "Next",
+        "next_step": "Markdown",
         "bench_done": "Save",
         "bench_title": "Markdown Bench",
-        "preview": "Preview"
+        "preview": "Preview",
+        "publish": "Publish"
     },
     "setting": {
         "language": "Language"

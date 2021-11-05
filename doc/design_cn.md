@@ -12,7 +12,7 @@ fligen 是一个以加密算法为基础的 geek 社交应用（非区块链）
 
 - title： 动态标题
 - description： 动态描述
-- md：markdown 内容
+- markdown：markdown 内容
 
 ## 发布动态
 

@@ -21,7 +21,8 @@
         "next_step": "下一步",
         "bench_done": "保存",
         "bench_title": "Markdown 工作台",
-        "preview": "预览"
+        "preview": "预览",
+        "publish": "发布"
     },
     "setting": {
         "language": "语言"

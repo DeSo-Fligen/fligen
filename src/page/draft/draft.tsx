@@ -1,59 +1,75 @@
-import { useEffect, useState } from "react";
+import { FormEvent, FormEventHandler, Ref, useEffect, useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useTranslation } from "react-i18next";
-import ArrowRight from "../../assets/img/icon/ico-arrow-right.png";
 
-
+import ArrowRightImg from "../../assets/img/icon/ico-arrow-right.png";
+import SendImg from "../../assets/img/icon/ico-send.png";
 
 import './draft.scss';
-import CodeBench from "./codeBench";
+import Bench, { CodeBenchRef } from "./bench";
+import { hooks } from "../../utils/hooks";
+import { StorageKey } from "../../utils/constant";
+import store from "../../state/store";
 
 enum DraftPage {
     Meta = 0,
-    CodeBench,
+    Bench,
 }
 
 function Draft() {
     const { t } = useTranslation()
     const tl = (suffix: string) => t(`draft.${suffix}`);
     const [page, set_page] = useState(DraftPage.Meta)
-    useEffect(() => {
-        
-    }, [page])
+    const [title, set_title] = hooks.useLocalStorage(StorageKey.Draft.Title, '');
+    const [desc, set_desc] = hooks.useLocalStorage(StorageKey.Draft.Desc, '');
+    const codeBenchRef = useRef<CodeBenchRef>({ markdown: '' })
+    
+    const onSubmit = (e: FormEvent) => {
+        e.preventDefault()
+        console.log(store.getState().draft)
+    }
     return (
         <div className="draft wh100 flex1 pr ani" style={{
             left: `-${page * 100}%`,
         }}>
             <div className="wh100 pad-1 fs0">
-                <Form>
+                <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>{tl('title')}</Form.Label>
-                        <Form.Control type="email" placeholder={tl('ph_title')} />
+                        <Form.Control placeholder={tl('ph_title')} value={title} onChange={e => set_title(e.target.value)}/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>{tl('desc')}</Form.Label>
-                        <Form.Control as="textarea" rows={3} placeholder={tl('ph_desc')} />
+                        <Form.Control as="textarea" rows={3} placeholder={tl('ph_desc')} value={desc} onChange={e => set_desc(e.target.value)}/>
                     </Form.Group>
-                </Form>
-                <div>
-                    <Button variant="primary" onClick={() => set_page(DraftPage.CodeBench)}>
-                        <div className="flex1">
+                    <Button variant="primary" onClick={() => set_page(DraftPage.Bench)}>
+                        <div className="flex1 white">
                             <span>{tl('next_step')}</span>
-                            <img src={ArrowRight} className="arrow-right"></img>
+                            <img src={ArrowRightImg} className="icon ml5"></img>
                         </div>
                     </Button>
-                </div>
+                    <Button variant="primary"  type="submit" onSubmit={console.log}>
+                        <span>{tl('publish')}</span>
+                        <img src={SendImg} className="icon ml5"></img>
+                    </Button>
+                </Form>
             </div>
             <div className="bench-container wh100 fs0 oh pad-2">
-                <div className="flex1 w100">
-                    <Button variant="secondary" className="flex1" onClick={() => set_page(DraftPage.Meta)}>
-                        <img src={ArrowRight} className="arrow-right" style={{transform:`rotate(180deg)`}}></img>
+                <div className="bench-header flex1 w100">
+                    <Button variant="secondary" className="flex1" onClick={() => {
+                        console.log(codeBenchRef)
+                        set_page(DraftPage.Meta)
+                    }}>
+                        <img src={ArrowRightImg} className="icon" style={{
+                            transform:`rotate(180deg)`,
+                            marginRight: '5px',
+                        }}></img>
                         <span>{tl('bench_done')}</span>
                     </Button>
-                    <div></div>
+                    <div className="title">{title}</div>
                 </div>
-                <CodeBench></CodeBench>
+                { page === DraftPage.Bench ? <Bench ref={codeBenchRef}></Bench> : null}
             </div>
             
         </div>

@@ -4,6 +4,7 @@ import "./setting.scss";
 
 function Setting () {
     const { t, i18n } = useTranslation()
+    const languages = ['zh_cn', 'en_us']
     return (
         <div className="setting-panel pad-1 w100 h100 bbox">
             <div className="line">
@@ -13,12 +14,11 @@ function Setting () {
                         {t(i18n.language)}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => {
-                            i18n.changeLanguage('zh_cn')
-                        }}>{t('zh_cn')}</Dropdown.Item>
-                        <Dropdown.Item onClick={() => {
-                            i18n.changeLanguage('en_us')
-                        }}>{t('en_us')}</Dropdown.Item>
+                        {languages.map(lang => (
+                            <Dropdown.Item key={lang} active={i18n.language===lang} onClick={() => {
+                                i18n.changeLanguage(lang)
+                            }}>{t(lang)}</Dropdown.Item>
+                        ))}
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
