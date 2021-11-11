@@ -3,14 +3,16 @@
     "privateKey": "私钥",
     "zh_cn": "简体中文",
     "en_us": "英文",
-    "button": {
-        "generate": "生成"
+    "header": {
+        "address": "地址",
+        "have_not": "还没有?"
     },
     "side": {
         "draft": "草稿",
         "activity": "动态",
         "mailbox": "通知",
-        "setting": "设置"
+        "setting": "设置",
+        "account": "账号"
     },
     "draft": {
         "title": "标题",
@@ -26,5 +28,25 @@
     },
     "setting": {
         "language": "语言"
+    },
+    "account": {
+        "create": "本地创建",
+        "secret_visible_on": "显示密钥",
+        "secret_visible_off": "隐藏密钥",
+        "no_account": "这里空空如也",
+        "use_this": "切换该账号",
+        "del_this": "删除",
+        "generate": "随机生成",
+        "address": "地址",
+        "publicKey": "公钥",
+        "privateKey": "私钥",
+        "add_account": "添加账号",
+        "dialog_save": "保存",
+        "dialog_save_completely": "完整保存",
+        "dialog_save_private": "不保存私钥",
+        "warn_text": "不要分享你的私钥",
+        "del_account": "删除账号",
+        "del_account_confirm": "确定删除该账号吗？",
+        "del_sure": "确认删除"
     }
 }

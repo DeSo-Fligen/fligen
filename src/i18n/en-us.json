@@ -3,14 +3,16 @@
     "privateKey": "Private Key",
     "zh_cn": "Chinese (simplified)",
     "en_us": "English",
-    "button": {
-        "generate": "Generate"
+    "header": {
+        "address": "Address",
+        "have_not": "haven't yet?"
     },
     "side": {
         "draft": "Draft",
         "activity": "Activity",
         "mailbox": "Mailbox",
-        "setting": "Setting"
+        "setting": "Setting",
+        "account": "Account"
     },
     "draft": {
         "title": "Title",
@@ -26,5 +28,25 @@
     },
     "setting": {
         "language": "Language"
+    },
+    "account": {
+        "create": "Create Locally",
+        "secret_visible_on": "Show private key",
+        "secret_visible_off": "Hide private key",
+        "no_account": "It's Empty",
+        "use_this": "Use this",
+        "del_this": "Delete",
+        "generate": "Generate",
+        "address": "Address",
+        "publicKey": "Public Key",
+        "privateKey": "Private Key",
+        "add_account": "Create An Account",
+        "dialog_save": "Save completely",
+        "dialog_save_completely": "Save completely",
+        "dialog_save_private": "Save without privateKey",
+        "warn_text": "please do NOT share your private key",
+        "del_account": "Delete Account",
+        "del_account_confirm": "Are you sure to delete this account?",
+        "del_sure": "Confirm"
     }
 }
