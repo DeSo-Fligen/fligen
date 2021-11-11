@@ -3,7 +3,7 @@ const path = require('path');
 const { app, BrowserWindow, session } = require('electron');
 const os = require('os')
 const isDev = require('electron-is-dev');
-const stringify = require('json-stringify-safe');
+
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({

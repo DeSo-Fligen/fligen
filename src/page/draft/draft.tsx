@@ -33,39 +33,39 @@ function Draft() {
         <div className="draft wh100 flex1 pr ani" style={{
             left: `-${page * 100}%`,
         }}>
-            <div className="wh100 pad-1 fs0">
+            <div className="wh100 p-3 fs0">
                 <Form onSubmit={onSubmit}>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>{tl('title')}</Form.Label>
                         <Form.Control placeholder={tl('ph_title')} value={title} onChange={e => set_title(e.target.value)}/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Group className="mb-3">
                         <Form.Label>{tl('desc')}</Form.Label>
                         <Form.Control as="textarea" rows={3} placeholder={tl('ph_desc')} value={desc} onChange={e => set_desc(e.target.value)}/>
                     </Form.Group>
-                    <Button variant="primary" onClick={() => set_page(DraftPage.Bench)}>
+                    <Button variant="secondary" onClick={() => set_page(DraftPage.Bench)}>
                         <div className="flex1 white">
                             <span>{tl('next_step')}</span>
-                            <img src={ArrowRightImg} className="icon ml5"></img>
+                            <img src={ArrowRightImg} className="icon ms-1"></img>
                         </div>
                     </Button>
-                    <Button variant="primary"  type="submit" onSubmit={console.log}>
+                    <Button variant="primary" className="ms-3" type="submit">
                         <span>{tl('publish')}</span>
-                        <img src={SendImg} className="icon ml5"></img>
+                        <img src={SendImg} className="icon ms-1"></img>
                     </Button>
                 </Form>
             </div>
-            <div className="bench-container wh100 fs0 oh pad-2">
+            <div className="bench-container wh100 fs0 oh p-2">
                 <div className="bench-header flex1 w100">
-                    <Button variant="secondary" className="flex1" onClick={() => {
-                        console.log(codeBenchRef)
+                    <Button variant="secondary" onClick={() => {
                         set_page(DraftPage.Meta)
                     }}>
-                        <img src={ArrowRightImg} className="icon" style={{
-                            transform:`rotate(180deg)`,
-                            marginRight: '5px',
-                        }}></img>
-                        <span>{tl('bench_done')}</span>
+                        <div className="flex1">
+                            <img src={ArrowRightImg} className="icon me-1" style={{
+                                transform:`rotate(180deg)`,
+                            }}></img>
+                            <span>{tl('bench_done')}</span>
+                        </div>
                     </Button>
                     <div className="title">{title}</div>
                 </div>

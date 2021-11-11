@@ -6,7 +6,7 @@ function Setting () {
     const { t, i18n } = useTranslation()
     const languages = ['zh_cn', 'en_us']
     return (
-        <div className="setting-panel pad-1 w100 h100 bbox">
+        <div className="setting-panel p-4 w100 h100 bbox">
             <div className="line">
                 <div className="label">{t('setting.language')}</div>
                 <Dropdown>

@@ -1,6 +1,7 @@
-import { time } from "console";
-import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { TypedUseSelectorHook, useSelector as _useSeletor } from "react-redux";
+import { RootReducer } from "../state/store";
 
 type TimerCallback<T> = { fn: T, timer: NodeJS.Timeout | null }
 
@@ -37,7 +38,8 @@ function useThrottle<T extends Function>(fn: T, delay: number, dep: any[] = []) 
 }
 
 /**
- * set interval. rerender can't disturb timer.
+ * set interval. rerender can't disturb t
+ * imer.
  * @param fn 
  * @param ms 
  * @param dep 
@@ -104,10 +106,14 @@ function useTranslationPrefix(prefix: string, split = '.') {
   }
 }
 
+type RootState = ReturnType<typeof RootReducer>
+const useSelector: TypedUseSelectorHook<RootState> = _useSeletor
+
 export const hooks = {
   useDebounce,
   useThrottle,
   useInterval,
   useLocalStorage,
   useTranslationPrefix,
+  useSelector,
 }

@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import "./bench.scss";
 import { hooks } from "../../utils/hooks";
 import { useDispatch } from "react-redux";
-import { draftAction } from "../../state/actions/draft";
+import { draftAction } from "../../state/actions/draftAction";
 import { StorageKey } from "../../utils/constant";
 import { utils } from "../../utils/utils";
 
@@ -28,7 +28,6 @@ export interface CodeBenchRef {
 export interface CodeBenchProps {
     
 }
-
 const Bench = forwardRef<CodeBenchRef, CodeBenchProps>((props, ref) => {
     const save_markdown = utils.getStorage(StorageKey.Draft.Markdown, '')
     const [markdown, setMarkdown] = useState(save_markdown)

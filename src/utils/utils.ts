@@ -11,8 +11,27 @@ function setStorage(key: string, value: any) {
     let data: string = JSON.stringify(value);
     localStorage.setItem(key, data)
 }
+function getStorageThenSave<T>(key: string, defaultValue: T, callback: (data: T) => void) {
+    const data = getStorage(key, defaultValue)
+    callback(data)
+    setStorage(key, data);
+}
+
+function objectToArray<T>(object: { [id: string]: T })
+    : Array<T & { _id: string }> 
+{
+    const result = Object.keys(object).map(_id => {
+        return {
+            _id,
+            ...object[_id],
+        }
+    })
+    return result
+}
 
 export const utils = {
     getStorage,
     setStorage,
+    getStorageThenSave,
+    objectToArray,
 }
