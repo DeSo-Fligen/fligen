@@ -1,6 +1,6 @@
 import { StorageKey } from "../../utils/constant";
 import { utils } from "../../utils/utils";
-import * as Action from "../actions/draft";
+import * as Action from "../actions/draftAction";
 
 const init_state = {
     title: utils.getStorage(StorageKey.Draft.Title, ''),

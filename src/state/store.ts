@@ -1,8 +1,10 @@
 import {combineReducers, createStore} from "redux"
-import draftReducer from "./reducers/draft";
+import draftReducer from "./reducers/draftReducer";
+import accountReducer from "./reducers/accountReducer"
 
-const RootReducer = combineReducers({
+export const RootReducer = combineReducers({
     draft: draftReducer,
+    account: accountReducer,
 })
 
 const store = createStore(
