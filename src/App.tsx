@@ -1,14 +1,14 @@
 import './App.scss';
-import StatusBar from './component/statusBar/statusBar';
+import HeaderBar from './component/headerBar/headerBar';
 import SideBar from './component/sideBar/sideBar';
-import {HashRouter, Route} from "react-router-dom";
+import { HashRouter, Route}  from "react-router-dom";
 import { routerList } from './utils/router';
 
 function App() {
   return (
     <div className="main-container">
       <div className="header-container">
-        <StatusBar></StatusBar>
+        <HeaderBar></HeaderBar>
       </div>
       <div className="mid-container flex1">
         <SideBar></SideBar>

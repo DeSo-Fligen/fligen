@@ -3,16 +3,18 @@ import { useTranslation } from "react-i18next";
 import "./capsule.scss";
 
 interface CapsuleProps {
-    title: string
-    content: string
+    title: ReactNode
+    content: ReactNode
+    className?: string
+    titleClass?: string
+    contentClass?: string
 }
 function Capsule (props: CapsuleProps) {
-    const { t } = useTranslation()
-
+    const { title, content, className, titleClass, contentClass} = props
     return (
-        <div className="capsule flex1">
-            <div className="title">{t(props.title)}</div>
-            <div className="content">{t(props.content)}</div>
+        <div className={`capsule flex1 ${className}`}>
+            <div className={`title ${titleClass}`}>{title}</div>
+            <div className={`content ${contentClass}`}>{content}</div>
         </div>
     )
 }
