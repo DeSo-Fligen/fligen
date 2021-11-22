@@ -1,5 +1,8 @@
 const path = require('path');
 
+const dotenv = require('dotenv');
+dotenv.config({ path: path.join(__dirname, '../.env') })
+
 const { app, BrowserWindow, session } = require('electron');
 const os = require('os')
 const isDev = require('electron-is-dev');
@@ -35,13 +38,18 @@ function createWindow() {
  * if OS platform is not MacOS, please add your path
  */
 async function loadExtensions() {
-  const loadChromeExtensions = (id, version) => {
-    return path.join(os.homedir(), `/Library/Application Support/Google/Chrome/Default/Extensions/${id}/${version}`)
+  if (!isDev) { return }
+  const loadChromeExtension = async (name, id, version) => {
+    if (version) {
+      console.log(`> load chrome extension: ${name} versions: ${version}`)
+      const extensionPath = path.join(os.homedir(), `/Library/Application Support/Google/Chrome/Default/Extensions/${id}/${version}`)
+      await session.defaultSession.loadExtension(extensionPath)
+    } else {
+      console.warn(`> load chrome extension: ${name} no version specified！`)
+    }
   }
-  const reactDevToolsPath = loadChromeExtensions(`fmkadmapgofadopljbjfkapdkoienihi`, '4.21.0_3');
-  const reduxDevToolsPath = loadChromeExtensions(`lmhkpmbekcpmknklioeibfkpmmfibljd`, '2.17.2_0');
-  await session.defaultSession.loadExtension(reactDevToolsPath);
-  await session.defaultSession.loadExtension(reduxDevToolsPath);
+  await loadChromeExtension(`React Dev Tool`, 'fmkadmapgofadopljbjfkapdkoienihi', process.env.REACT_DEV_TOOL_VERSION);
+  await loadChromeExtension(`Redux Dev Tool`, 'lmhkpmbekcpmknklioeibfkpmmfibljd', process.env.REDUX_DEV_TOOL_VERSION);
 }
 
 // This method will be called when Electron has finished
