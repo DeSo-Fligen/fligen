@@ -43,7 +43,7 @@ const Bench = forwardRef<CodeBenchRef, CodeBenchProps>((props, ref) => {
 
     // save markdown every XXX ms during lifetime
     hooks.useInterval(() => {
-        console.log('备份', StorageKey.Draft.Markdown, markdown)
+        // console.log('备份', StorageKey.Draft.Markdown, markdown)
         // save in localStorage
         utils.setStorage(StorageKey.Draft.Markdown, markdown);
         // save in redux
