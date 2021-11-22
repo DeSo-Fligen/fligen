@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "a social application power by blockchain.",
-  "main": "public/electron.js",
+  "main": "electron/main.js",
   "author": {
     "name": "oloshe"
   },

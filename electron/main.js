@@ -30,6 +30,10 @@ function createWindow() {
   }
 }
 
+/**
+ * load chrome extensions
+ * if OS platform is not MacOS, please add your path
+ */
 async function loadExtensions() {
   const loadChromeExtensions = (id, version) => {
     return path.join(os.homedir(), `/Library/Application Support/Google/Chrome/Default/Extensions/${id}/${version}`)
