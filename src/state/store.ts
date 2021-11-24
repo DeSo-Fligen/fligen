@@ -9,7 +9,8 @@ export const RootReducer = combineReducers({
 
 const store = createStore(
     RootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : null
+    // @ts-ignore
+    window?.devToolsExtension?.() ?? (f => f),
 )
 
 export default store;
