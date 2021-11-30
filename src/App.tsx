@@ -14,7 +14,6 @@ function App() {
       try {
         const web3 = await utils.getWeb3();
         const accounts = await web3.eth.getAccounts();
-        console.log(accounts)
         store.dispatch(accountActions.addAccount(accounts));
       } catch(e) {
         console.error(e);
