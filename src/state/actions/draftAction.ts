@@ -9,13 +9,11 @@ export interface SaveMdAction {
 
 export type DraftAction = SaveMdAction;
 
-function saveMarkdown(data: string): SaveMdAction {
-    return {
-        type: Constant.SAVE_MD,
-        markdown: data,
+export const draftActions = {
+    saveMarkdown(data: string): SaveMdAction {
+        return {
+            type: Constant.SAVE_MD,
+            markdown: data,
+        }
     }
-}
-
-export const draftAction = {
-    saveMarkdown
 }

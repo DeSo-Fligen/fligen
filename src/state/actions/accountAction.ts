@@ -1,47 +1,17 @@
-export const ADD_ACCOUNT = 'add_account';
-export const SET_CURRENT_ACCOUNT = 'set_current_account'
-export const DEL_ACCOUNT = 'del_account'
+export const ADD_ACCOUNT = "ADD_ACCOUNT";
 
-export interface Identity {
-    address: string
-    publicKey: string
-    privateKey: string
-}
-
-export interface AddAccountAction {
+export interface AddAccount {
     type: typeof ADD_ACCOUNT,
-    data: Identity
+    data: Array<string>
 }
 
-export interface SetCurrentAccountAction {
-    type: typeof SET_CURRENT_ACCOUNT,
-    key: string
-}
+export type AccountAction = AddAccount;
 
-export interface DelAccountAction {
-    type: typeof DEL_ACCOUNT,
-    key: string
-}
-
-export type AccountAction = AddAccountAction | SetCurrentAccountAction | DelAccountAction;
-
-export function addAccount(Identity: Identity): AddAccountAction {
-    return {
-        type: ADD_ACCOUNT,
-        data: Identity,
-    }
-}
-
-export function setCurrent(key: string): SetCurrentAccountAction {
-    return {
-        type: SET_CURRENT_ACCOUNT,
-        key,
-    }
-}
-
-export function DelAccount(key: string): DelAccountAction {
-    return {
-        type: DEL_ACCOUNT,
-        key,
+export const accountActions = {
+    addAccount(data: Array<string>): AccountAction {
+        return {
+            type: ADD_ACCOUNT,
+            data: data,
+        }
     }
 }

@@ -1,6 +1,6 @@
 import {combineReducers, createStore} from "redux"
 import draftReducer from "./reducers/draftReducer";
-import accountReducer from "./reducers/accountReducer"
+import { accountReducer } from "./reducers/accountReducer"
 
 export const RootReducer = combineReducers({
     draft: draftReducer,
@@ -9,7 +9,8 @@ export const RootReducer = combineReducers({
 
 const store = createStore(
     RootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : null
+    // @ts-ignore
+    window?.__REDUX_DEVTOOLS_EXTENSION__?.() ?? (f => f),
 )
 
 export default store;
