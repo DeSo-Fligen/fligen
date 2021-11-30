@@ -10,11 +10,7 @@ export const RootReducer = combineReducers({
 const store = createStore(
     RootReducer,
     // @ts-ignore
-<<<<<<< HEAD
-    window?.devToolsExtension?.() ?? (f => f),
-=======
     window?.__REDUX_DEVTOOLS_EXTENSION__?.() ?? (f => f),
->>>>>>> dev
 )
 
 export default store;
