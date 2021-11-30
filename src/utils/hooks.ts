@@ -1,41 +1,41 @@
-import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { TypedUseSelectorHook, useSelector as _useSeletor } from "react-redux";
 import { RootReducer } from "../state/store";
 
 type TimerCallback<T> = { fn: T, timer: NodeJS.Timeout | null }
 
-function useDebounce<T extends Function>(fn: T, delay: number, dep: any[] = []) {
-  const { current } = useRef<TimerCallback<T>>({ fn, timer: null });
-  useEffect(function () {
-    current.fn = fn;
-  }, [fn]);
+// function useDebounce<T extends Function>(fn: T, delay: number, dep: any[] = []) {
+//   const { current } = useRef<TimerCallback<T>>({ fn, timer: null });
+//   useEffect(function () {
+//     current.fn = fn;
+//   }, [current, fn]);
 
-  return useCallback((...args) => {
-    if (current.timer) {
-      clearTimeout(current.timer);
-    }
-    current.timer = setTimeout(() => {
-      current.fn(...args);
-    }, delay);
-  }, dep)
-}
+//   return useCallback((...args) => {
+//     if (current.timer) {
+//       clearTimeout(current.timer);
+//     }
+//     current.timer = setTimeout(() => {
+//       current.fn(...args);
+//     }, delay);
+//   }, dep)
+// }
 
-function useThrottle<T extends Function>(fn: T, delay: number, dep: any[] = []) {
-  const { current } = useRef<TimerCallback<T>>({ fn, timer: null });
-  useEffect(function () {
-    current.fn = fn;
-  }, [fn]);
+// function useThrottle<T extends Function>(fn: T, delay: number, dep: any[] = []) {
+//   const { current } = useRef<TimerCallback<T>>({ fn, timer: null });
+//   useEffect(function () {
+//     current.fn = fn;
+//   }, [fn]);
 
-  return useCallback(function f(...args) {
-    if (!current.timer) {
-      current.timer = setTimeout(() => {
-        current.timer = null;
-      }, delay);
-      current.fn(...args);
-    }
-  }, dep);
-}
+//   return useCallback(function f(...args) {
+//     if (!current.timer) {
+//       current.timer = setTimeout(() => {
+//         current.timer = null;
+//       }, delay);
+//       current.fn(...args);
+//     }
+//   }, dep);
+// }
 
 /**
  * set interval. rerender can't disturb t
@@ -50,7 +50,7 @@ function useInterval<T extends Function>(fn: T, ms: number, dep: any[] = []) {
   // refresh function on dependencies changed.
   useEffect(() => {
     ref.current.fn = fn
-  }, dep);
+  }, [ref, dep, fn]);
 
   const clear = () => clearInterval(ref.current.timer!)
   
@@ -61,7 +61,7 @@ function useInterval<T extends Function>(fn: T, ms: number, dep: any[] = []) {
 
     // clearInterval before destory
     return clear
-  }, [])
+  }, [ms])
 
   // return handler to caller
   return clear
@@ -110,8 +110,8 @@ type RootState = ReturnType<typeof RootReducer>
 const useSelector: TypedUseSelectorHook<RootState> = _useSeletor
 
 export const hooks = {
-  useDebounce,
-  useThrottle,
+  // useDebounce,
+  // useThrottle,
   useInterval,
   useLocalStorage,
   useTranslationPrefix,

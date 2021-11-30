@@ -1,4 +1,4 @@
-import { FC, forwardRef, FunctionComponent, useEffect, useImperativeHandle, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import Nav from "react-bootstrap/Nav";
 
 // markdown
@@ -9,11 +9,10 @@ import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 // editor
 import { Controlled as CodeMirror } from "react-codemirror2";
 
-import { useTranslation } from "react-i18next";
 import "./bench.scss";
 import { hooks } from "../../utils/hooks";
 import { useDispatch } from "react-redux";
-import { draftAction } from "../../state/actions/draftAction";
+import { draftActions } from "../../state/actions/draftAction";
 import { StorageKey } from "../../utils/constant";
 import { utils } from "../../utils/utils";
 
@@ -47,7 +46,7 @@ const Bench = forwardRef<CodeBenchRef, CodeBenchProps>((props, ref) => {
         // save in localStorage
         utils.setStorage(StorageKey.Draft.Markdown, markdown);
         // save in redux
-        dispath(draftAction.saveMarkdown(markdown));
+        dispath(draftActions.saveMarkdown(markdown));
     }, 3000, [markdown])
 
     return (
@@ -62,7 +61,7 @@ const Bench = forwardRef<CodeBenchRef, CodeBenchProps>((props, ref) => {
                     <Nav.Link eventKey={TabKey.md}>{tl('preview')}</Nav.Link>
                 </Nav.Item>
             </Nav>
-            <div className={`bench_block ${currentTab == TabKey.editor ? 'active' :''}`}>
+            <div className={`bench_block ${currentTab === TabKey.editor ? 'active' :''}`}>
                 <div className="label">{tl('bench_title')}</div>
                 <CodeMirror
                     value={markdown}
@@ -76,7 +75,7 @@ const Bench = forwardRef<CodeBenchRef, CodeBenchProps>((props, ref) => {
                     onChange={(editor, data, value) => {
                     }}/>
             </div>
-            <div className={`bench_block ${currentTab == TabKey.md ? 'active' :''}`}>
+            <div className={`bench_block ${currentTab === TabKey.md ? 'active' :''}`}>
                 <div className="label">{tl('preview')}</div>
                 <div className="md-view">
                     <ReactMarkdown

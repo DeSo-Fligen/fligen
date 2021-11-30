@@ -1,4 +1,4 @@
-import { FormEvent, FormEventHandler, Ref, useEffect, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useTranslation } from "react-i18next";
@@ -46,12 +46,12 @@ function Draft() {
                     <Button variant="secondary" onClick={() => set_page(DraftPage.Bench)}>
                         <div className="flex1 white">
                             <span>{tl('next_step')}</span>
-                            <img src={ArrowRightImg} className="icon ms-1"></img>
+                            <img src={ArrowRightImg} className="icon ms-1" alt=""></img>
                         </div>
                     </Button>
                     <Button variant="primary" className="ms-3" type="submit">
                         <span>{tl('publish')}</span>
-                        <img src={SendImg} className="icon ms-1"></img>
+                        <img src={SendImg} className="icon ms-1" alt=""></img>
                     </Button>
                 </Form>
             </div>
@@ -63,7 +63,7 @@ function Draft() {
                         <div className="flex1">
                             <img src={ArrowRightImg} className="icon me-1" style={{
                                 transform:`rotate(180deg)`,
-                            }}></img>
+                            }} alt=""></img>
                             <span>{tl('bench_done')}</span>
                         </div>
                     </Button>

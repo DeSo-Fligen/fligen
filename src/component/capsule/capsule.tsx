@@ -1,5 +1,4 @@
 import { ReactNode } from "react"
-import { useTranslation } from "react-i18next";
 import "./capsule.scss";
 
 interface CapsuleProps {
