@@ -15,6 +15,13 @@
 yarn start
 ```
 
+## 学习
+
+- [Truffle 中文文档](https://learnblockchain.cn/docs/truffle/)
+- [Solidity中文文档](https://learnblockchain.cn/docs/solidity/)
+- [web3.js 中文文档](https://learnblockchain.cn/docs/web3.js/)
+- [ethers.js 中文文档](https://learnblockchain.cn/docs/ethers.js/)
+
 ## 合作
 
 如果你加入了这个项目，你可以添加我的微信：tulpa_jsl。我们可以群里讨论任何的想法。
