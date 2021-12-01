@@ -24,6 +24,6 @@ yarn start
 
 ## 合作
 
-如果你加入了这个项目，你可以添加我的微信：tulpa_jsl。我们可以群里讨论任何的想法。
+加入飞书群讨论一起讨论吧
 
-加入这个开源项目，一起做点什么吧。
+![飞书二维码](https://raw.githubusercontent.com/DeSo-Fligen/fligen/main/WechatIMG58.jpeg)
