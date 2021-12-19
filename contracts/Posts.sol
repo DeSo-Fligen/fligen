@@ -5,7 +5,7 @@ pragma solidity >=0.4.21 <0.7.0;
 contract Posts {
     struct Post {
         string title;
-        string content;
+        string desc;
         string markdown;
         address owner;
     }
@@ -13,12 +13,12 @@ contract Posts {
     
     function addPost(
         string calldata title, 
-        string calldata content, 
+        string calldata desc, 
         string calldata markdown
     ) external {
         Post memory new_post = Post({
             title: title,
-            content: content,
+            desc: desc,
             markdown: markdown,
             owner: msg.sender
         });
@@ -33,7 +33,7 @@ contract Posts {
         Post memory tmp_post =  m_post[index];
         return (
             tmp_post.title,
-            tmp_post.content,
+            tmp_post.desc,
             tmp_post.markdown,
             tmp_post.owner
         );
