@@ -11,8 +11,16 @@
 
 ## 开发
 
+
 ``` shell
+# 启动前端界面
 yarn start
+
+# 编译合约
+truffle compile
+
+# 部署合约
+truffle migrate
 ```
 
 ## 学习
