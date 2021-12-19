@@ -11,6 +11,7 @@ import Bench, { CodeBenchRef } from "./bench";
 import { hooks } from "../../utils/hooks";
 import { StorageKey } from "../../utils/constant";
 import store from "../../state/store";
+import PostsContract from "../../contracts/Posts.json"
 
 enum DraftPage {
     Meta = 0,
@@ -27,7 +28,29 @@ function Draft() {
     
     const onSubmit = (e: FormEvent) => {
         e.preventDefault()
-        console.log(store.getState().draft)
+        const draft = store.getState().draft;
+        (async () => {
+            const networkId = await window.web3.eth.net.getId();
+            const deployedNetwork = (PostsContract.networks as any)[networkId];
+            const contract = new window.web3.eth.Contract(
+                PostsContract.abi as any,
+                deployedNetwork && deployedNetwork.address
+            );
+            // TODO 成功或失败 弹窗
+            try {
+                await contract.methods.addPost(
+                    draft.title,
+                    draft.desc,
+                    draft.markdown
+                ).send({
+                    // TODO 使用当前账号
+                    from: store.getState().account.accounts[0],
+                });
+                console.log('交易成功')
+            } catch (e) {
+                console.error('交易失败', e)
+            }
+        })();
     }
     return (
         <div className="draft wh100 flex1 pr ani" style={{
