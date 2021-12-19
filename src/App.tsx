@@ -13,6 +13,7 @@ function App() {
     (async() => {
       try {
         const web3 = await getWeb3();
+        window.web3 = web3;
         const accounts = await web3.eth.getAccounts();
         store.dispatch(accountActions.addAccount(accounts));
         console.log(web3)
