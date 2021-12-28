@@ -6,11 +6,11 @@ import settingImg from "../assets/img/icon/ico-setting.png";
 import accountImg from "../assets/img/icon/ico-key.png";
 
 // components
-import Draft from "../page/draft/draft";
-import Activity from "../page/activity/activity";
-import Mailbox from "../page/mailbox/mailbox";
-import Setting from "../page/setting/setting";
-import Account from "../page/account/account";
+import Draft from "../page/Draft";
+import Activity from "../page/Activity";
+import Mailbox from "../page/Mailbox";
+import Setting from "../page/Setting";
+import Account from "../page/Account";
 
 export const routerList = [
     {

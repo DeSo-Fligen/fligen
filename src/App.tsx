@@ -1,37 +1,35 @@
-import './App.scss';
-import HeaderBar from './component/headerBar/headerBar';
-import SideBar from './component/sideBar/sideBar';
+import HeaderBar from './component/HeaderBar';
+import SideBar from './component/SideBar';
 import { HashRouter, Route}  from "react-router-dom";
 import { routerList } from './utils/router';
 import { useEffect } from 'react';
 import store from './state/store';
 import { accountActions } from './state/actions/accountAction';
 import { getWeb3 } from './web3/web3';
+import Web3 from 'web3';
 
 function App() {
-  useEffect(() => {
-    (async() => {
-      try {
-        const web3 = await getWeb3();
-        window.web3 = web3;
-        const accounts = await web3.eth.getAccounts();
-        store.dispatch(accountActions.addAccount(accounts));
-        console.log(web3)
-      } catch(e) {
-        console.error(e);
-      }
-    })();
-  }, [])
+  // getWeb3()
+  //     .then(web3 => {
+  //       window.web3 = web3;
+  //       // return web3.eth.getAccounts();
+  //     })
+  //     .then(accounts => {
+  //       // store.dispatch(accountActions.addAccount(accounts));
+  //     })
+  //     .catch(console.error)
+  // const web3 = new Web3((window as any).ethereum)
+  // console.log(window.web3)
 
   return (
-    <div className="main-container">
-      <div className="header-container">
+    <div className="w-screen h-screen">
+      <div className="h-[44px] flex items-center">
         <HeaderBar></HeaderBar>
       </div>
-      <div className="mid-container flex1">
+      <div className="h-[calc(100vh-44px)] flex items-center">
         <SideBar></SideBar>
         <HashRouter>
-          <div className="content-container">
+          <div className="h-full flex-1 bg-slate-50 overflow-scroll scroll-hidden">
             {routerList.map(item => (
               <Route key={item.name} path={item.path} exact={item.exact} component={item.component}></Route>
             ))}

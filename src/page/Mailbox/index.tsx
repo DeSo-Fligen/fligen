@@ -1,6 +1,6 @@
 function Mailbox() {
     return (
-        <div>Mailbox</div>
+        <div>TODO Mailbox</div>
     )
 }
 export default Mailbox;

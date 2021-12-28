@@ -1,0 +1,17 @@
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/material.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* 隐藏 scrollbar */
+    .scrollbar-hidden::-webkit-scrollbar {
+        display:none;
+    }
+    /* overwritten in CodeMirror source css style height */
+    .CodeMirror {
+        height: 100% !important;
+    }
+}

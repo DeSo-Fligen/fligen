@@ -1,6 +1,6 @@
 function Activity() {
     return (
-        <div>Activity</div>
+        <div>TODO Activity</div>
     )
 }
 export default Activity;

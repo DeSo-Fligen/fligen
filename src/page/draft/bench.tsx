@@ -1,5 +1,4 @@
 import { forwardRef, useImperativeHandle, useState } from "react";
-import Nav from "react-bootstrap/Nav";
 
 // markdown
 import ReactMarkdown from "react-markdown";
@@ -9,7 +8,7 @@ import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 // editor
 import { Controlled as CodeMirror } from "react-codemirror2";
 
-import "./bench.scss";
+// import "./bench.scss";
 import { hooks } from "../../utils/hooks";
 import { useDispatch } from "react-redux";
 import { draftActions } from "../../state/actions/draftAction";
@@ -50,22 +49,27 @@ const Bench = forwardRef<CodeBenchRef, CodeBenchProps>((props, ref) => {
     }, 3000, [markdown])
 
     return (
-        <div className="bench_main w100">
-            <Nav justify variant="tabs" className="tabs fs0" defaultActiveKey={currentTab} onSelect={(key, e) => {
-                key && setCurrentTab(key as TabKey)
-            }}>
-                <Nav.Item className="usn cp">
-                    <Nav.Link eventKey={TabKey.editor}>{tl('bench_title')}</Nav.Link>
-                </Nav.Item>
-                <Nav.Item className="usn cp">
-                    <Nav.Link eventKey={TabKey.md}>{tl('preview')}</Nav.Link>
-                </Nav.Item>
-            </Nav>
-            <div className={`bench_block ${currentTab === TabKey.editor ? 'active' :''}`}>
-                <div className="label">{tl('bench_title')}</div>
+        <div className="relative flex flex-col md:flex-row h-[calc(100%-50px)] w-full">
+            {/* <div className="md:hidden">
+                <Nav justify variant="tabs" className="my-2 mb-1 w-[400px] h-[44px] flex-shrink-0" defaultActiveKey={currentTab} onSelect={(key, e) => {
+                    key && setCurrentTab(key as TabKey)
+                }}>
+                    <Nav.Item className="select-none cursor-pointer">
+                        <Nav.Link eventKey={TabKey.editor}>{tl('bench_title')}</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item className="select-none cursor-pointer">
+                        <Nav.Link eventKey={TabKey.md}>{tl('preview')}</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+            </div> */}
+            {/* markdown编辑器 */}
+            {/* // TODO 修复高度不一致问题 */}
+            {/* // TODO 响应式设计：屏幕过短切换页签 */}
+            <div className={`h-[calc(100%-50px)] flex-1 flex-col md:mr-4 ${currentTab === TabKey.editor ? '' :''}`}>
+                <div className="text-sm h-5 my-2">{tl('bench_title')}</div>
                 <CodeMirror
                     value={markdown}
-                    className="self_mirror"
+                    className="h-full"
                     options={{
                         theme: 'material',
                     }}
@@ -75,9 +79,10 @@ const Bench = forwardRef<CodeBenchRef, CodeBenchProps>((props, ref) => {
                     onChange={(editor, data, value) => {
                     }}/>
             </div>
-            <div className={`bench_block ${currentTab === TabKey.md ? 'active' :''}`}>
-                <div className="label">{tl('preview')}</div>
-                <div className="md-view">
+            {/* 预览 */}
+            <div className={`h-[calc(100%-50px)] flex-1 flex-col md:w-[calc(50%-20px)] md:h-[calc(100%-10px)] mr-5 ${currentTab === TabKey.md ? '' :''}`}>
+                <div className="text-sm h-5 my-2">{tl('preview')}</div>
+                <div className="bg-slate-200 p-2 box-border break-words whitespace-pre-line h-full overflow-scroll scrollbar-hidden">
                     <ReactMarkdown
                         children={markdown}
                         components={{
