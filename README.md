@@ -6,10 +6,15 @@
 2. Redux Devtools (可选)
 3. React Developer Tools (可选)
 
-安装 Ganache 用于本地测试
+__安装 truffle 用于编译部署合约__
+__安装 Ganache 用于本地测试环境__
 
 
 ## 开发
+
+> __First Steps__
+> 
+> 在 `package.json` 的 `contributors` 中添加自己的信息
 
 
 ``` shell
